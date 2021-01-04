@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "535185063106",
+    "project_id": "brew-team-3f11d",
+    "storage_bucket": "brew-team-3f11d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:535185063106:android:8c1c280ce8e6ba17a98f5b",
+        "android_client_info": {
+          "package_name": "com.philipo.brew_team"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "535185063106-b8i112k6bp0cs698pi6d883da37kms5c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBUOqmu84ERmJ-tQ-0RnVLCf0Ng7MKKaco"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "535185063106-b8i112k6bp0cs698pi6d883da37kms5c.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
