@@ -1,23 +1,19 @@
-import 'package:brew_team/services/auth.dart';
 import 'package:flutter/material.dart';
+import 'package:brew_team/services/auth.dart';
 
-/* This class handles user signin. 
-*It is called by authenticate.dart*/
-class SignIn extends StatefulWidget {
+class Register extends StatefulWidget {
   // We declare the toggleView function
   final Function toggleView;
 
   // The constructor then assigns the toggleView from authenticate.dart
   // to the local toggleView property
-  SignIn({this.toggleView});
-
+  Register({this.toggleView});
   @override
-  _SignInState createState() => _SignInState();
+  _RegisterState createState() => _RegisterState();
 }
 
-class _SignInState extends State<SignIn> {
+class _RegisterState extends State<Register> {
   final AuthService _auth = AuthService();
-
   // Declare states for the email and password fields for holding the data
   String email = '';
   String password = '';
@@ -29,11 +25,11 @@ class _SignInState extends State<SignIn> {
       appBar: AppBar(
         backgroundColor: Colors.brown[400],
         elevation: 0.0,
-        title: Text('Sign in to Brew team'),
+        title: Text('Sign up to Brew team'),
         actions: <Widget>[
           FlatButton.icon(
             icon: Icon(Icons.person),
-            label: Text('Register'),
+            label: Text('Sign in'),
             onPressed: () {
               widget.toggleView();
             },
@@ -65,7 +61,7 @@ class _SignInState extends State<SignIn> {
               RaisedButton(
                 color: Colors.pink[400],
                 child: Text(
-                  'Sign in',
+                  'Register',
                   style: TextStyle(color: Colors.white),
                 ),
                 onPressed: () async {
