@@ -7,7 +7,7 @@ class SignIn extends StatefulWidget {
   // We declare the toggleView function
   final Function toggleView;
 
-  // The constructor then assigns the toggleView from authenticate.dart
+  // The constructor then imports the toggleView function from authenticate.dart
   // to the local toggleView property
   SignIn({this.toggleView});
 
@@ -35,6 +35,7 @@ class _SignInState extends State<SignIn> {
             icon: Icon(Icons.person),
             label: Text('Register'),
             onPressed: () {
+              //Assign the toggleView to the sign in button
               widget.toggleView();
             },
           )
