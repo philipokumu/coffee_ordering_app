@@ -34,6 +34,21 @@ class AuthService {
   }
 
   // Sign in with email and password
+  Future signInWithEmailAndPassword(String email, String password) async {
+    try {
+      AuthResult result = await _auth.signInWithEmailAndPassword(
+          email: email, password: password);
+
+      // The promise return a firebase user with info we dont need
+      FirebaseUser user = result.user;
+
+      // We thus take the firebase user and creat a user model with only the info we need
+      return _userFromFirebaseUser(user);
+    } catch (e) {
+      print(e.toString());
+      return null;
+    }
+  }
 
   // Register in with email and password
   Future registerWithEmailAndPassword(String email, String password) async {
