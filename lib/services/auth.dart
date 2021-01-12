@@ -1,4 +1,5 @@
 import 'package:brew_team/models/user.dart';
+import 'package:brew_team/services/database.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 /* This class is called from the sign in. It handles fetching auth info from firebase 
@@ -26,6 +27,7 @@ class AuthService {
     try {
       AuthResult result = await _auth.signInAnonymously();
       FirebaseUser user = result.user;
+
       return _userFromFirebaseUser(user);
     } catch (e) {
       print(e.toString());
@@ -58,6 +60,10 @@ class AuthService {
 
       // The promise return a firebase user with info we dont need
       FirebaseUser user = result.user;
+
+      // Create a new document for the user with the uid and dummy data
+      await DatabaseService(uid: user.uid)
+          .updateUserData('0', 'new crew member', 100);
 
       // We thus take the firebase user and creat a user model with only the info we need
       return _userFromFirebaseUser(user);
