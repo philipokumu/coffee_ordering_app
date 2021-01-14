@@ -1,6 +1,9 @@
+import 'package:brew_team/models/brew.dart';
 import 'package:brew_team/services/auth.dart';
 import 'package:flutter/material.dart';
-import 'package:brew_team/services/auth.dart';
+import 'package:brew_team/services/database.dart';
+import 'package:provider/provider.dart';
+import 'package:brew_team/screens/home/brew_list.dart';
 
 /* This is the landing page after logging in
 * It is called either by wrapper.dart if logged in already, 
@@ -11,21 +14,27 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.brown[50],
-      appBar: AppBar(
-        title: Text('Brew team'),
-        backgroundColor: Colors.brown[400],
-        elevation: 0.0,
-        actions: <Widget>[
-          FlatButton.icon(
-              onPressed: () async {
-                // Signout on clicking this button
-                await _auth.signOut();
-              },
-              icon: Icon(Icons.person),
-              label: Text('Log out'))
-        ],
+    // Stream checks if there are any changes in the brew db
+    return StreamProvider<List<Brew>>.value(
+      value: DatabaseService().brews,
+      child: Scaffold(
+        backgroundColor: Colors.brown[50],
+        appBar: AppBar(
+          title: Text('Brew team'),
+          backgroundColor: Colors.brown[400],
+          elevation: 0.0,
+          actions: <Widget>[
+            FlatButton.icon(
+                onPressed: () async {
+                  // Signout on clicking this button
+                  await _auth.signOut();
+                },
+                icon: Icon(Icons.person),
+                label: Text('Log out'))
+          ],
+        ),
+        // Data from the brews db shows here
+        body: BrewList(),
       ),
     );
   }
