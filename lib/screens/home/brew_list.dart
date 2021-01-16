@@ -1,4 +1,5 @@
 import 'package:brew_team/models/brew.dart';
+import 'package:brew_team/screens/home/brew_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -11,13 +12,12 @@ class _BrewListState extends State<BrewList> {
   @override
   Widget build(BuildContext context) {
     final brews = Provider.of<List<Brew>>(context);
-    if (brews != null) {
-      brews.forEach((brew) {
-        print(brew.name);
-        print(brew.sugars);
-        print(brew.strength);
-      });
-    }
-    return Container();
+    return ListView.builder(
+      itemCount: brews.length,
+      //Returns a template of the item or brew
+      itemBuilder: (context, index) {
+        return BrewTile(brew: brews[index]);
+      },
+    );
   }
 }

@@ -27,13 +27,13 @@ class DatabaseService {
     return snapshot.documents.map((doc) {
       return Brew(
         name: doc.data['name'] ?? '',
-        sugars: doc.data['sugars'] ?? 0,
+        sugars: doc.data['sugars'] ?? '0',
         strength: doc.data['strength'] ?? 0,
       );
     }).toList();
   }
 
-  //Get brews database stream
+  //This stream gets brews database snapshot incase of any change
   Stream<List<Brew>> get brews {
     return brewCollection.snapshots().map(_brewListFromSnapshot);
   }
