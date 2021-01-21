@@ -53,7 +53,14 @@ class Home extends StatelessWidget {
           ],
         ),
         // Data from the brews db shows here
-        body: BrewList(),
+        body: Container(
+          child: BrewList(),
+          decoration: BoxDecoration(
+              image: DecorationImage(
+            image: AssetImage('assets/coffee_bg.png'),
+            fit: BoxFit.cover,
+          )),
+        ),
       ),
     );
   }

@@ -65,7 +65,7 @@ class AuthService {
       await DatabaseService(uid: user.uid)
           .updateUserData('0', 'new crew member', 100);
 
-      // We thus take the firebase user and creat a user model with only the info we need
+      // We thus take the firebase user and create a user model with only the info we need
       return _userFromFirebaseUser(user);
     } catch (e) {
       print(e.toString());
